@@ -141,7 +141,8 @@ class Rollout
 
   def active_in_group?(group, user)
     f = @groups[group.to_sym]
-    f && f.call(user)
+    # f && f.call(user)
+    (x = f.try(:call, user)) ? x : false
   end
 
   def get(feature)
