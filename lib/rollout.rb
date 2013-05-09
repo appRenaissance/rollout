@@ -164,6 +164,11 @@ class Rollout
     (@storage.get(features_key) || "").split(",").map(&:to_sym)
   end
 
+  def register_feature(feature)
+    f = get(feature)
+    save(f)
+  end
+
   private
     def key(name)
       "feature:#{name}"
